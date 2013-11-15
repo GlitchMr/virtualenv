@@ -56,7 +56,8 @@ if test -z "$VIRTUAL_ENV_DISABLE_PROMPT"
     function fish_prompt
         # Prompt override?
         if test -n "__VIRTUAL_PROMPT__"
-            printf "%s%s%s" "__VIRTUAL_PROMPT__" (set_color normal) (_old_fish_prompt)
+            printf "%s%s%s" "__VIRTUAL_PROMPT__" (set_color normal)
+            _old_fish_prompt
             return
         end
         # ...Otherwise, prepend env
@@ -64,10 +65,11 @@ if test -z "$VIRTUAL_ENV_DISABLE_PROMPT"
         if test $_checkbase = "__"
             # special case for Aspen magic directories
             # see http://www.zetadev.com/software/aspen/
-            printf "%s[%s]%s %s" (set_color -b blue white) (basename (dirname "$VIRTUAL_ENV")) (set_color normal) (_old_fish_prompt)
+            printf "%s[%s]%s %s" (set_color -b blue white) (basename (dirname "$VIRTUAL_ENV")) (set_color normal)
         else
-            printf "%s(%s)%s%s" (set_color -b blue white) (basename "$VIRTUAL_ENV") (set_color normal) (_old_fish_prompt)
+            printf "%s(%s)%s%s" (set_color -b blue white) (basename "$VIRTUAL_ENV") (set_color normal)
         end
+        _old_fish_prompt
     end 
     
     set -gx _OLD_FISH_PROMPT_OVERRIDE "$VIRTUAL_ENV"
